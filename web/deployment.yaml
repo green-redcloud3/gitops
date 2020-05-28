@@ -1,10 +1,20 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: web-app
 spec:
-  ports:
-  - port: 80
-    targetPort: 80
+  replicas: 1
+  revisionHistoryLimit: 3
   selector:
-    app: web-app
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - image: redcloud3/app:v1
+        name: web-app
+        ports:
+        - containerPort: 80
