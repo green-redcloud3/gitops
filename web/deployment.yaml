@@ -14,7 +14,7 @@ spec:
         app: web-app
     spec:
       containers:
-      - image: redcloud3/app:v2
+      - image: redcloud3/app:v3
         name: web-app
         ports:
         - containerPort: 80
